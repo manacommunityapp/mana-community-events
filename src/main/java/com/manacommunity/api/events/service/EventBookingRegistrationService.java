@@ -1,0 +1,31 @@
+package com.manacommunity.api.events.service;
+
+import com.manacommunity.api.events.entity.EventBookingRegistration;
+import com.manacommunity.common.user.model.AppUser;
+
+import java.util.List;
+
+public interface EventBookingRegistrationService {
+
+    EventBookingRegistration createRegistration(EventBookingRegistration registration, AppUser user, Long communityId);
+
+    EventBookingRegistration createRegistration(EventBookingRegistration registration, AppUser user, Long communityId, boolean adminOverride);
+
+    EventBookingRegistration updateRegistration(Long id, EventBookingRegistration patch, AppUser user);
+
+    List<EventBookingRegistration> getMyRegistrations(AppUser user, Long communityId);
+
+    List<EventBookingRegistration> getMyRegistrations(AppUser user, Long communityId, String status);
+
+    List<EventBookingRegistration> getRegistrationsByCommunity(Long communityId);
+
+    List<EventBookingRegistration> getRegistrationsByCommunity(Long communityId, String status);
+
+    EventBookingRegistration getRegistrationById(Long id, AppUser user);
+
+    void cancelRegistration(Long id, AppUser user);
+
+    void cancelRegistration(Long id, String reason, AppUser user);
+
+    void deleteRegistration(Long id, AppUser user);
+}
